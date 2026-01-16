@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#2F3A2E" />
+  <title>Mavi Casa — Experiências moldadas à mão</title>
+  <meta name="description" content="Velas de cera vegetal em potes de cimento artesanal. Um refúgio que crepita — e convida você a respirar." />
+
+  <!-- Fonts (opcional). Remova se preferir 100% system fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       MAVI CASA — ONE PAGE
+       HTML + CSS only
+       ========================= */
+
+    :root{
+      /* Ink + paper */
+      --ink: #121212;
+      --paper: #F6F2EA;
+      --paper-2: #EFE9DE;
+      --cement: #D7D3CC;
+      --stone: #BDB8AF;
+
+      /* Moss palette (tone-on-tone) */
+      --moss-950: #1E261E;
+      --moss-900: #2F3A2E;
+      --moss-800: #384538;
+      --moss-700: #465846;
+      --moss-200: #D9E3D7;
+      --moss-120: #EAF1E7;
+
+      /* Lemon (La Dolce Verano) */
+      --lemon-50:  #FFF9DB; /* very pale */
+      --lemon-100: #FFF3BF;
+      --lemon-200: #FFE88A;
+      --lemon-500: #F5D547; /* accent */
+      --lemon-700: #C9A900;
+
+      /* UI */
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --shadow-soft: 0 12px 28px rgba(0,0,0,.10);
+      --shadow-mini: 0 8px 18px rgba(0,0,0,.10);
+      --max: 1120px;
+
+      --serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+      --sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width: 100%; display: block; }
+
+    /* Layout helpers */
+    .container{
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .section{
+      padding: 86px 0;
+      position: relative;
+      overflow: clip;
+    }
+
+    .section--tight{ padding: 70px 0; }
+
+    .eyebrow{
+      font-size: .9rem;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+
+    .h1,.h2,.h3{
+      font-family: var(--serif);
+      line-height: 1.1;
+      margin: 0;
+    }
+    .h1{ font-size: clamp(2.4rem, 3.5vw, 3.4rem); letter-spacing: -0.02em; }
+    .h2{ font-size: clamp(1.8rem, 2.6vw, 2.4rem); letter-spacing: -0.01em; }
+    .h3{ font-size: 1.25rem; }
+
+    .lead{
+      font-size: 1.08rem;
+      max-width: 62ch;
+      margin: 14px 0 0 0;
+      opacity: .92;
+    }
+
+    .muted{ opacity: .75; }
+    .small{ font-size: .95rem; }
+
+    /* =========================
+       NAV
+       ========================= */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(246, 242, 234, 0.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .nav__inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+    .brand{
+      display: flex; align-items: baseline; gap: 10px;
+      font-family: var(--serif);
+      letter-spacing: -0.01em;
+    }
+    .brand__mark{
+      width: 10px; height: 10px; border-radius: 50%;
+      background: linear-gradient(180deg, var(--moss-700), var(--moss-900));
+      box-shadow: 0 0 0 5px rgba(70, 88, 70, .12);
+      flex: 0 0 auto;
+      transform: translateY(-1px);
+    }
+    .brand__name{ font-weight: 600; font-size: 1.15rem; }
+    .brand__tag{ font-family: var(--sans); font-weight: 500; font-size: .95rem; opacity: .65; }
+
+    .nav__links{
+      display: flex; gap: 18px; align-items: center;
+      font-weight: 500;
+      font-size: .95rem;
+    }
+    .nav__links a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      opacity: .86;
+      transition: background .25s ease, opacity .25s ease;
+    }
+    .nav__links a:hover{
+      background: rgba(0,0,0,.05);
+      opacity: 1;
+    }
+
+    /* =========================
+       BUTTONS
+       ========================= */
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform .18s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn--moss{
+      background: linear-gradient(180deg, var(--moss-700), var(--moss-900));
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
+    }
+    .btn--moss:hover{ box-shadow: 0 14px 28px rgba(0,0,0,.22); }
+
+    .btn--ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.35);
+      color: #fff;
+    }
+    .btn--ghost:hover{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.45);
+    }
+
+    .btn--lemon{
+      background: linear-gradient(180deg, var(--lemon-200), var(--lemon-500));
+      color: var(--ink);
+      box-shadow: 0 10px 22px rgba(0,0,0,.12);
+    }
+    .btn--lemon:hover{ box-shadow: 0 14px 28px rgba(0,0,0,.16); }
+
+    .btn__icon{
+      width: 18px; height: 18px;
+      display: inline-block;
+    }
+
+    /* =========================
+       BASIC ENTRY ANIMATIONS
+       (Load-in + stagger via --d)
+       ========================= */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .75s cubic-bezier(.2,.7,.2,1) forwards;
+      animation-delay: var(--d, 0ms);
+    }
+    .reveal--fade{
+      transform: none;
+      animation-name: fade;
+    }
+    .reveal--scale{
+      transform: scale(.98) translateY(8px);
+      animation-name: rise;
+    }
+
+    @keyframes rise{
+      to{ opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade{
+      to{ opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ opacity: 1; transform: none; animation: none; }
+      .btn{ transition: none; }
+    }
+
+    /* =========================
+       HERO (MOSS)
+       ========================= */
+    .hero{
+      background:
+        radial-gradient(1200px 600px at 75% 10%, rgba(217,227,215,.12), transparent 60%),
+        radial-gradient(900px 500px at 20% 60%, rgba(217,227,215,.10), transparent 60%),
+        linear-gradient(180deg, var(--moss-900), var(--moss-950));
+      color: #fff;
+      padding: 86px 0 74px;
+    }
+    .hero__grid{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 42px;
+      align-items: center;
+    }
+    .hero .lead{ opacity: .92; }
+    .hero__actions{
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .hero__note{
+      margin-top: 10px;
+      font-size: .95rem;
+      opacity: .78;
+    }
+
+    /* Decorative “candle” block */
+    .hero__visual{
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 24px 52px rgba(0,0,0,.25);
+      overflow: hidden;
+      min-height: 320px;
+    }
+    .grain{
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(1px 1px at 10% 30%, rgba(255,255,255,.06) 50%, transparent 55%),
+        radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,.05) 50%, transparent 55%),
+        radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,.05) 50%, transparent 55%),
+        radial-gradient(1px 1px at 65% 55%, rgba(255,255,255,.04) 50%, transparent 55%);
+      opacity: .9;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+    .candle{
+      position: absolute;
+      inset: auto 22px 22px 22px;
+      height: 190px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.10)),
+        linear-gradient(135deg, rgba(215,211,204,.30), rgba(189,184,175,.14));
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .candle:before{
+      content:"";
+      position: absolute;
+      top: -22px;
+      left: 20px;
+      width: calc(100% - 40px);
+      height: 34px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .wick{
+      position: absolute;
+      left: 50%;
+      top: 86px;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 26px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.65);
+      opacity: .9;
+    }
+    .flame{
+      position: absolute;
+      left: 50%;
+      top: 44px;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 38px;
+      background: radial-gradient(circle at 30% 30%, #fff 0 22%, var(--lemon-200) 34%, rgba(245,213,71,.35) 70%, transparent 73%);
+      filter: blur(.2px);
+      border-radius: 60% 40% 60% 40% / 70% 40% 60% 30%;
+      opacity: .95;
+      animation: flicker 2.6s ease-in-out infinite;
+    }
+    @keyframes flicker{
+      0%,100%{ transform: translateX(-50%) rotate(-1deg) scale(1); opacity: .92; }
+      40%{ transform: translateX(-50%) rotate(1deg) scale(1.03); opacity: .98; }
+      70%{ transform: translateX(-50%) rotate(-2deg) scale(.99); opacity: .90; }
+    }
+
+    /* =========================
+       SECTION 2 — MANIFESTO (MOSS tone-on-tone)
+       Text must be black/white (here: black)
+       ========================= */
+    .manifesto{
+      background:
+        radial-gradient(900px 500px at 10% 20%, rgba(70,88,70,.18), transparent 60%),
+        linear-gradient(180deg, var(--moss-120), #F3F6EF);
+      border-top: 1px solid rgba(255,255,255,.10);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .manifesto__card{
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: var(--shadow-soft);
+      padding: 28px;
+    }
+    .manifesto__grid{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 26px;
+      align-items: start;
+    }
+    .quote{
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.35;
+      opacity: .92;
+      margin: 0;
+    }
+    .quote strong{ font-weight: 600; }
+
+    /* =========================
+       Neutral sections (institutional)
+       ========================= */
+    .neutral{
+      background:
+        radial-gradient(900px 550px at 85% 20%, rgba(215,211,204,.38), transparent 60%),
+        linear-gradient(180deg, var(--paper), var(--paper-2));
+    }
+
+    /* Triad */
+    .triad{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+    .tile{
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: var(--shadow-mini);
+    }
+    .tile__icon{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(180deg, rgba(47,58,46,.14), rgba(47,58,46,.06));
+      border: 1px solid rgba(47,58,46,.14);
+      margin-bottom: 10px;
+    }
+    .tile__icon svg{ width: 20px; height: 20px; opacity: .92; }
+
+    /* Two-column content blocks */
+    .split{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+      margin-top: 22px;
+    }
+    .panel{
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: var(--shadow-mini);
+    }
+    .list{
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+    .list li{ margin: 8px 0; }
+
+    /* =========================
+       LA DOLCE VERANO (LEMON UI)
+       ========================= */
+    .lemon{
+      background:
+        radial-gradient(900px 550px at 15% 15%, rgba(245,213,71,.30), transparent 55%),
+        radial-gradient(900px 550px at 85% 40%, rgba(255,232,138,.35), transparent 55%),
+        linear-gradient(180deg, var(--lemon-50), #FFFDF3);
+      border-top: 1px solid rgba(0,0,0,.06);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .badge{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      font-weight: 600;
+    }
+    .badge__dot{
+      width: 10px; height: 10px; border-radius: 50%;
+      background: linear-gradient(180deg, var(--lemon-200), var(--lemon-500));
+      box-shadow: 0 0 0 5px rgba(245,213,71,.20);
+    }
+
+    .sensation{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .chip{
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+    }
+    .chip__top{
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .pill{
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(245,213,71,.18);
+      border: 1px solid rgba(245,213,71,.35);
+    }
+
+    /* =========================
+       PRODUCT CARDS
+       ========================= */
+    .products{
+      background:
+        radial-gradient(900px 550px at 10% 20%, rgba(215,211,204,.35), transparent 60%),
+        linear-gradient(180deg, #FFFDF7, var(--paper));
+    }
+    .cards{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+    .card{
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: var(--shadow-mini);
+      display: grid;
+      gap: 10px;
+      min-height: 220px;
+      transition: transform .18s ease, box-shadow .25s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(0,0,0,.14);
+    }
+    .card__header{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .card__name{
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .tag{
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.04);
+      border: 1px solid rgba(0,0,0,.06);
+      opacity: .85;
+      white-space: nowrap;
+    }
+    .card__desc{ margin: 0; opacity: .85; }
+    .card__actions{ margin-top: auto; display:flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Ritual steps */
+    .steps{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .step{
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      background: rgba(255,255,255,.56);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: var(--shadow-mini);
+    }
+    .step__num{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      font-weight: 800;
+      background: linear-gradient(180deg, rgba(47,58,46,.12), rgba(47,58,46,.06));
+      border: 1px solid rgba(47,58,46,.14);
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .footer{
+      background: linear-gradient(180deg, #141614, #0F100F);
+      color: #fff;
+      padding: 46px 0;
+    }
+    .footer__grid{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .footer a{
+      opacity: .9;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.35);
+      text-underline-offset: 4px;
+    }
+    .footer a:hover{ opacity: 1; }
+
+    /* Floating WhatsApp */
+    .wa-float{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      border-radius: 999px;
+      padding: 12px 14px;
+      background: linear-gradient(180deg, var(--moss-700), var(--moss-900));
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(0,0,0,.22);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,.18);
+      transition: transform .18s ease, box-shadow .25s ease;
+    }
+    .wa-float:hover{ transform: translateY(-2px); box-shadow: 0 22px 44px rgba(0,0,0,.26); }
+    .wa-float svg{ width: 18px; height: 18px; }
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero__grid{ grid-template-columns: 1fr; }
+      .manifesto__grid{ grid-template-columns: 1fr; }
+      .triad{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .sensation{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .nav__links{ display: none; }
+      .hero__visual{ min-height: 280px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav" aria-label="Navegação principal">
+    <div class="container nav__inner">
+      <a class="brand" href="#topo" aria-label="Ir para o topo do site">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">Mavi Casa</span>
+        <span class="brand__tag">porto seguro</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Links">
+        <a href="#mavi">Mavi</a>
+        <a href="#colecao">La Dolce Verano</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#ritual">Ritual</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SECTION 1: HERO (MOSS) -->
+  <section id="topo" class="section hero">
+    <div class="container hero__grid">
+      <div>
+        <div class="eyebrow reveal" style="--d: 60ms;">Mavi Casa</div>
+        <h1 class="h1 reveal" style="--d: 140ms;">Experiências moldadas à mão.</h1>
+        <p class="lead reveal" style="--d: 220ms;">
+          Velas de cera vegetal em potes de cimento artesanal. Um refúgio que crepita — e convida você a respirar.
+        </p>
+
+        <!-- TROQUE O NÚMERO ABAIXO PELO SEU: 55 + DDD + número (sem espaços/símbolos) -->
+        <div class="hero__actions reveal" style="--d: 320ms;">
+          <a class="btn btn--moss"
+             href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20escolher%20a%20minha%20Mavi.%20Pode%20me%20ajudar%20com%20a%20fragr%C3%A2ncia%3F"
+             target="_blank" rel="noopener"
+             aria-label="Abrir WhatsApp para escolher a Mavi">
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M20 11.9A8 8 0 1 1 8.3 4.7 8 8 0 0 1 20 11.9Z" stroke="white" stroke-width="1.6" opacity=".95"/>
+                <path d="M7.2 19.7 6 22l2.5-.9A8.8 8.8 0 0 0 12 22a8 8 0 0 0 8-8" stroke="white" stroke-width="1.6" opacity=".95"/>
+              </svg>
+            </span>
+            Quero escolher a minha no WhatsApp
+          </a>
+
+          <a class="btn btn--ghost" href="#colecao" aria-label="Ir para a coleção La Dolce Verano">
+            Ver a coleção
+          </a>
+        </div>
+
+        <div class="hero__note reveal" style="--d: 420ms;">
+          Atendimento pelo WhatsApp, com calma.
+        </div>
+      </div>
+
+      <div class="hero__visual reveal reveal--scale" style="--d: 220ms;" aria-hidden="true">
+        <div class="grain"></div>
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="candle"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WHAT IS MAVI (MOSS tone-on-tone; text black) -->
+  <section id="mavi" class="section manifesto">
+    <div class="container">
+      <div class="manifesto__card">
+        <div class="manifesto__grid">
+          <div>
+            <div class="eyebrow reveal" style="--d: 60ms;">Institucional</div>
+            <h2 class="h2 reveal" style="--d: 140ms;">Um cuidado que se sente.</h2>
+            <p class="lead reveal" style="--d: 220ms;">
+              A Mavi nasce do encontro entre a textura do cimento e a delicadeza das fragrâncias. Nada de excessos. Só presença.
+              Um ritual simples, para voltar pra dentro — um acender por vez.
+            </p>
+          </div>
+
+          <div>
+            <p class="quote reveal" style="--d: 260ms;">
+              “A beleza está na imperfeição natural do cimento.<br>
+              <strong>Silêncio por fora.</strong> Sensação por dentro.”
+            </p>
+            <p class="small muted reveal" style="--d: 340ms;">
+              Cera vegetal • Pavio de madeira • Potes artesanais
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: TRIAD EXPERIENCE -->
+  <section class="section neutral">
+    <div class="container">
+      <div class="eyebrow reveal" style="--d: 60ms;">A experiência Mavi</div>
+      <h2 class="h2 reveal" style="--d: 140ms;">Três formas de acolher o seu dia.</h2>
+      <p class="lead reveal" style="--d: 220ms;">
+        Ritual, som e permanência — um caminho simples para transformar rotina em presença.
+      </p>
+
+      <div class="triad">
+        <article class="tile reveal" style="--d: 140ms;">
+          <div class="tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3c2.8 3 4.2 5.3 4.2 7.6A4.2 4.2 0 1 1 7.8 10.6C7.8 8.3 9.2 6 12 3Z" stroke="black" stroke-width="1.6"/>
+              <path d="M7.5 20.5c1.2-1.2 2.7-1.8 4.5-1.8s3.3.6 4.5 1.8" stroke="black" stroke-width="1.6" opacity=".7"/>
+            </svg>
+          </div>
+          <h3 class="h3">Acender é voltar.</h3>
+          <p class="card__desc">O seu dia foi longo. A sua casa te espera. Acenda e deixe o mundo lá fora.</p>
+        </article>
+
+        <article class="tile reveal" style="--d: 220ms;">
+          <div class="tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 14c4-6 12-6 16 0" stroke="black" stroke-width="1.6"/>
+              <path d="M6 16c3-4 9-4 12 0" stroke="black" stroke-width="1.6" opacity=".8"/>
+              <path d="M8 18c2-2 6-2 8 0" stroke="black" stroke-width="1.6" opacity=".6"/>
+            </svg>
+          </div>
+          <h3 class="h3">Já ouviu o som da calma hoje?</h3>
+          <p class="card__desc">O pavio de madeira crepita suavemente. Uma mini lareira particular.</p>
+        </article>
+
+        <article class="tile reveal" style="--d: 300ms;">
+          <div class="tile__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 8c0-2 1.6-3.5 3.6-3.5h2.8C15.4 4.5 17 6 17 8v10c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2V8Z" stroke="black" stroke-width="1.6"/>
+              <path d="M9 10h6" stroke="black" stroke-width="1.6" opacity=".7"/>
+            </svg>
+          </div>
+          <h3 class="h3">Quando termina, continua.</h3>
+          <p class="card__desc">O pote de cimento fica com você — como vaso, porta-joias ou detalhe de casa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: HOW IT'S MADE -->
+  <section class="section neutral section--tight">
+    <div class="container">
+      <div class="split">
+        <div class="panel reveal" style="--d: 80ms;">
+          <div class="eyebrow">Feito à mão</div>
+          <h2 class="h2">Em pequenos lotes.</h2>
+          <p class="lead">
+            Cada peça carrega pequenas variações do artesanato — a beleza da imperfeição natural do cimento.
+            A fragrância preenche o ar com leveza. O resto é silêncio.
+          </p>
+        </div>
+
+        <div class="panel reveal" style="--d: 180ms;">
+          <div class="eyebrow">O que você sente</div>
+          <ul class="list">
+            <li><strong>Textura:</strong> cimento artesanal, sólido e orgânico.</li>
+            <li><strong>Som:</strong> crepitar suave do pavio de madeira.</li>
+            <li><strong>Ar:</strong> fragrâncias premium, presença elegante.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: PACKAGING -->
+  <section class="section neutral section--tight">
+    <div class="container">
+      <div class="panel reveal" style="--d: 100ms;">
+        <div class="eyebrow">Embalagem</div>
+        <h2 class="h2">Um presente por dentro.</h2>
+        <p class="lead">
+          Papel seda, cuidado no toque e um card com o ritual de queima e ideias de reaproveitamento do pote.
+          Porque a experiência começa antes da chama.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: COLLECTION INTRO (LEMON) -->
+  <section id="colecao" class="section lemon">
+    <div class="container">
+      <div class="badge reveal" style="--d: 60ms;">
+        <span class="badge__dot" aria-hidden="true"></span>
+        La Dolce Verano
+      </div>
+
+      <h2 class="h2 reveal" style="--d: 140ms;">Onde o verão encontra a luz.</h2>
+      <p class="lead reveal" style="--d: 220ms;">
+        Inspirada no verão europeu, La Dolce Verano perfuma a casa com frescor cítrico e notas herbais — como janelas abertas,
+        sombra bonita e ar leve. Uma coleção feita para iluminar o ambiente com elegância, sem excessos.
+      </p>
+
+      <div class="hero__actions reveal" style="--d: 320ms;">
+        <a class="btn btn--lemon"
+           href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20ajuda%20para%20escolher%20uma%20fragr%C3%A2ncia%20da%20cole%C3%A7%C3%A3o%20La%20Dolce%20Verano."
+           target="_blank" rel="noopener"
+           aria-label="Abrir WhatsApp para escolher fragrância da coleção">
+          Quero ajuda para escolher uma fragrância
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: SENSATION MAP (LEMON UI) -->
+  <section class="section lemon section--tight">
+    <div class="container">
+      <div class="eyebrow reveal" style="--d: 60ms;">Mapa de sensações</div>
+      <h2 class="h2 reveal" style="--d: 140ms;">Qual clima você quer na sua casa?</h2>
+      <p class="lead reveal" style="--d: 220ms;">
+        Me conta seu caminho — eu te indico a Mavi ideal.
+      </p>
+
+      <div class="sensation">
+        <div class="chip reveal" style="--d: 140ms;">
+          <div class="chip__top">
+            <strong>Cítrico &amp; Solar</strong>
+            <span class="pill">limão • luz</span>
+          </div>
+          <p class="card__desc">Brilho leve, energia limpa, sensação de casa aberta.</p>
+        </div>
+
+        <div class="chip reveal" style="--d: 220ms;">
+          <div class="chip__top">
+            <strong>Herbal &amp; Fresco</strong>
+            <span class="pill">verbena • alecrim</span>
+          </div>
+          <p class="card__desc">Verde elegante, ar renovado, presença sofisticada.</p>
+        </div>
+
+        <div class="chip reveal" style="--d: 300ms;">
+          <div class="chip__top">
+            <strong>Brisa do Mar</strong>
+            <span class="pill">oceano • conforto</span>
+          </div>
+          <p class="card__desc">Fresco de costa, calma salgada, atmosfera luminosa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: PRODUCTS (CARDS) -->
+  <section id="produtos" class="section products">
+    <div class="container">
+      <div class="eyebrow reveal" style="--d: 60ms;">Produtos</div>
+      <h2 class="h2 reveal" style="--d: 140ms;">Escolha a sua Mavi.</h2>
+      <p class="lead reveal" style="--d: 220ms;">
+        Se quiser, me chama no WhatsApp — eu te ajudo a encontrar a fragrância certa.
+      </p>
+
+      <div class="cards" aria-label="Lista de produtos em cards">
+
+        <!-- Card 1 -->
+        <article class="card reveal" style="--d: 140ms;">
+          <div class="card__header">
+            <h3 class="card__name">Capri Lemongrass</h3>
+            <span class="tag">cítrico</span>
+          </div>
+          <p class="card__desc">Capim-limão fresco e revigorante. Um “bom dia” em forma de aroma.</p>
+          <div class="card__actions">
+            <a class="btn btn--lemon"
+               href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20a%20Mavi%20Capri%20Lemongrass%20(La%20Dolce%20Verano).%20Tem%20disponibilidade%20e%20qual%20o%20prazo%20de%20envio%3F"
+               target="_blank" rel="noopener"
+               aria-label="Comprar Capri Lemongrass no WhatsApp">
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card reveal" style="--d: 200ms;">
+          <div class="card__header">
+            <h3 class="card__name">Frescor de Citronela</h3>
+            <span class="tag">leve</span>
+          </div>
+          <p class="card__desc">Citronela com limão siciliano. Leve, confortável, limpa o ar.</p>
+          <div class="card__actions">
+            <a class="btn btn--lemon"
+               href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20a%20Mavi%20Frescor%20de%20Citronela%20(La%20Dolce%20Verano).%20Tem%20disponibilidade%20e%20qual%20o%20prazo%20de%20envio%3F"
+               target="_blank" rel="noopener"
+               aria-label="Comprar Frescor de Citronela no WhatsApp">
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card reveal" style="--d: 260ms;">
+          <div class="card__header">
+            <h3 class="card__name">Sicília Verbena</h3>
+            <span class="tag">herbal</span>
+          </div>
+          <p class="card__desc">Verbena, alecrim e limão siciliano. Herbal, solar, sofisticada.</p>
+          <div class="card__actions">
+            <a class="btn btn--lemon"
+               href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20a%20Mavi%20Sic%C3%ADlia%20Verbena%20(La%20Dolce%20Verano).%20Tem%20disponibilidade%20e%20qual%20o%20prazo%20de%20envio%3F"
+               target="_blank" rel="noopener"
+               aria-label="Comprar Sicília Verbena no WhatsApp">
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card reveal" style="--d: 320ms;">
+          <div class="card__header">
+            <h3 class="card__name">Positano Mediterrâneo</h3>
+            <span class="tag">elegante</span>
+          </div>
+          <p class="card__desc">Alecrim, limão siciliano e bergamota. Fresco de costa, luminoso.</p>
+          <div class="card__actions">
+            <a class="btn btn--lemon"
+               href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20a%20Mavi%20Positano%20Mediterr%C3%A2neo%20(La%20Dolce%20Verano).%20Tem%20disponibilidade%20e%20qual%20o%20prazo%20de%20envio%3F"
+               target="_blank" rel="noopener"
+               aria-label="Comprar Positano Mediterrâneo no WhatsApp">
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card reveal" style="--d: 380ms;">
+          <div class="card__header">
+            <h3 class="card__name">Amalfi Solei</h3>
+            <span class="tag">brisa</span>
+          </div>
+          <p class="card__desc">Limão, oceano e verbena. Brisa salgada com toque cítrico.</p>
+          <div class="card__actions">
+            <a class="btn btn--lemon"
+               href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20a%20Mavi%20Amalfi%20Solei%20(La%20Dolce%20Verano).%20Tem%20disponibilidade%20e%20qual%20o%20prazo%20de%20envio%3F"
+               target="_blank" rel="noopener"
+               aria-label="Comprar Amalfi Solei no WhatsApp">
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card reveal" style="--d: 440ms;">
+          <div class="card__header">
+            <h3 class="card__name">Rosé di Limone</h3>
+            <span class="tag">delicado</span>
+          </div>
+          <p class="card__desc">Pink lemonade. Fresco, delicado e ligeiramente doce na medida.</p>
+          <div class="card__actions">
+            <a class="btn btn--lemon"
+               href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20a%20Mavi%20Ros%C3%A9%20di%20Limone%20(La%20Dolce%20Verano).%20Tem%20disponibilidade%20e%20qual%20o%20prazo%20de%20envio%3F"
+               target="_blank" rel="noopener"
+               aria-label="Comprar Rosé di Limone no WhatsApp">
+              Comprar no WhatsApp
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: RITUAL -->
+  <section id="ritual" class="section neutral section--tight">
+    <div class="container">
+      <div class="eyebrow reveal" style="--d: 60ms;">Ritual</div>
+      <h2 class="h2 reveal" style="--d: 140ms;">Um ritual simples.</h2>
+      <p class="lead reveal" style="--d: 220ms;">
+        Um cuidado pequeno que muda o clima da casa.
+      </p>
+
+      <div class="steps">
+        <div class="step reveal" style="--d: 140ms;">
+          <div class="step__num">1</div>
+          <strong>Primeira queima</strong>
+          <p class="card__desc">Deixe a superfície derreter por completo — isso ajuda a queimar por igual.</p>
+        </div>
+        <div class="step reveal" style="--d: 220ms;">
+          <div class="step__num">2</div>
+          <strong>Pavio com cuidado</strong>
+          <p class="card__desc">Se precisar, apare bem pouco. O som deve ser suave, confortável.</p>
+        </div>
+        <div class="step reveal" style="--d: 300ms;">
+          <div class="step__num">3</div>
+          <strong>Volte sempre</strong>
+          <p class="card__desc">Acenda com presença — e deixe o crepitar fazer o resto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Rodapé">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="reveal" style="--d: 80ms;">
+          <div class="brand" style="color:#fff;">
+            <span class="brand__mark" aria-hidden="true" style="background: linear-gradient(180deg, #5E7A5E, #2F3A2E);"></span>
+            <span class="brand__name">Mavi Casa</span>
+            <span class="brand__tag" style="opacity:.72;color:#fff;">porto seguro</span>
+          </div>
+          <p class="small" style="opacity:.82; max-width: 70ch; margin-top: 12px;">
+            Um lugar onde cada detalhe é pensado para ser o seu refúgio particular.
+          </p>
+        </div>
+
+        <div class="reveal" style="--d: 160ms;">
+          <p class="small" style="margin:0 0 10px; opacity:.8;">Links</p>
+          <p class="small" style="margin:0 0 6px;">
+            <a href="#colecao">Coleção La Dolce Verano</a>
+          </p>
+          <p class="small" style="margin:0 0 6px;">
+            <a href="#produtos">Produtos</a>
+          </p>
+          <p class="small" style="margin:0;">
+            <a href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20falar%20com%20a%20Mavi%20Casa."
+               target="_blank" rel="noopener">WhatsApp</a>
+          </p>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top: 26px; opacity:.65;">
+        © <span aria-label="Ano atual">2026</span> Mavi Casa. Feito com calma.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a class="wa-float"
+     href="https://wa.me/55SEUNUMEROAQUI?text=Oi%21%20Quero%20escolher%20a%20minha%20Mavi.%20Pode%20me%20ajudar%3F"
+     target="_blank" rel="noopener"
+     aria-label="Abrir WhatsApp (botão flutuante)">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20 11.9A8 8 0 1 1 8.3 4.7 8 8 0 0 1 20 11.9Z" stroke="white" stroke-width="1.6" opacity=".95"/>
+      <path d="M7.2 19.7 6 22l2.5-.9A8.8 8.8 0 0 0 12 22a8 8 0 0 0 8-8" stroke="white" stroke-width="1.6" opacity=".95"/>
+    </svg>
+    WhatsApp
+  </a>
+
+</body>
+</html>
