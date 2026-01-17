@@ -1,0 +1,95 @@
+{
+  "version": "0.4",
+  "title": "Mavi Header",
+  "type": "section",
+  "content": [
+    {
+      "id": "maviHdr",
+      "elType": "section",
+      "settings": {
+        "structure": "20",
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1120,
+          "sizes": []
+        },
+        "gap": "default",
+        "padding": {
+          "unit": "px",
+          "top": "14",
+          "right": "0",
+          "bottom": "14",
+          "left": "0",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "rgba(246, 242, 234, 0.78)",
+        "border_border": "solid",
+        "border_color": "rgba(0, 0, 0, 0.06)",
+        "border_width": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "1",
+          "left": "0",
+          "isLinked": false
+        },
+        "sticky": "top",
+        "sticky_on": [
+          "desktop",
+          "tablet",
+          "mobile"
+        ],
+        "sticky_offset": 0,
+        "sticky_effects_offset": 0,
+        "css_classes": "mavi-header"
+      },
+      "elements": [
+        {
+          "id": "maviBrandCol",
+          "elType": "column",
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "maviBrandWrap",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"mavi-brand\"><span class=\"mavi-brand__mark\" aria-hidden=\"true\"></span><div class=\"mavi-brand__text\"><span class=\"mavi-brand__name\">Mavi Casa</span><span class=\"mavi-brand__tag\">porto seguro</span></div></div>"
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        },
+        {
+          "id": "maviNavCol",
+          "elType": "column",
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "maviNavLinks",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<nav class=\"mavi-nav\" aria-label=\"Links\"><a href=\"#mavi\">Mavi</a><a href=\"#colecao\">La Dolce Verano</a><a href=\"#produtos\">Produtos</a><a href=\"#ritual\">Ritual</a></nav>"
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    }
+  ],
+  "settings": {},
+  "metadata": {}
+}
